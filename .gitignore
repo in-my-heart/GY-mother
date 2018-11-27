@@ -9,8 +9,8 @@ out
 gen
 .settings
 mvcdo.iml
-src/main/resources/xai-constant.properties
-src/main/resources/xai-jdbc.properties
 src/main/webapp/bootstrap/js/plugins/bootstrap-table/.DS_Store
 src/main/webapp/view/ai/.DS_Store
 target/
+/src/main/resources/xai-constant.properties
+/xai.sql
