@@ -33,9 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="ibox">
 				<div class="ibox-body">
 					<div class="columns pull-left">
-					微信|支付宝订单号:<input id="centerSeqId" class="cmcbsearch" placeholder="请输入微信|支付宝订单号" type="text">
+						微信昵称:<input id="nikeName" class="cmcbsearch" placeholder="请输入微信昵称 type="text">
 					<button class="btn btn-success" onclick="reLoad()"> 查 询</button>
 					</div>
+					<button id="btn_delete" type="button" class="btn btn-default btn-sm">
+						<span class="btn layui-btn-danger" aria-hidden="true"></span>删除
+					</button>
 					<table id="exampleTable" data-mobile-responsive="true">
 					</table>
 				</div>
@@ -122,6 +125,7 @@ var prefix = "<%=basePath%>";
 						formatter:function (value,row,index) {
 							var values='.'+value;
 							var a = '<img title="年龄:'+row.age+',颜值:'+row.beauty+'" class="faceimage" src="'+values+'" width="66px" height="66px" onerror="this.src=\'./image/loadfail.png\'">';
+							console.log(a);
 							return a;
                         }						
 					}, {
@@ -255,8 +259,8 @@ var prefix = "<%=basePath%>";
 						align : 'center',
 						width:130,
 						formatter : function(value, row, index) {
-							var e = '<a  class="btn btn-primary btn-sm ' + s_edit_h + '"  title="查看详情" onclick="view(\''+ row.faceId+ '\')"><i class="fa fa-edit "></i></a> ';
-							var d = '<a class="btn btn-warning btn-sm ' + s_edit_h + '" " title="删除"  onclick="remove(\''+ row.faceId+'\')"><i class="fa fa-remove"></i></a> ';
+							var e = '<a  class="btn btn-primary btn-sm ' + s_edit_h + '"  title="编辑" onclick="view(\''+ row.faceId+ '\')"><i class="fa fa-edit "></i></a> ';
+							var d = '<a class="btn btn-warning btn-sm ' + s_edit_h + ' " title="删除"  onclick="remove(\''+ row.faceId+'\')"><i class="fa fa-remove"></i></a> ';
 							return e+d;
 						}
 					} ]
@@ -296,8 +300,12 @@ var prefix = "<%=basePath%>";
 			area : [ '800px', '620px' ],
 			offset:'100px',
 			content : prefix + 'cmbct/viewCmbcT/' + id // iframe的url
-		});
+    });
 	}
+//删除按钮点击事件
+$("#btn_delete").on("click", function () {
+   batchRemove();
+});
 	//批量删除操作
 	function batchRemove() {
 		var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
