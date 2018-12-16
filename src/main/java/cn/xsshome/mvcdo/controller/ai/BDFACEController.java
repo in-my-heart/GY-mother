@@ -1,5 +1,9 @@
 package cn.xsshome.mvcdo.controller.ai;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import cn.xsshome.mvcdo.common.AIConstant;
 import cn.xsshome.mvcdo.pojo.ai.baidu.dbo.BDFaceDetectDO;
@@ -55,6 +55,11 @@ public class BDFACEController {
 	@ResponseBody
 	@GetMapping("/list")
 	public PageUtils list(@RequestParam Map<String, Object> params) {
+		try {
+			params.put("nikeName", URLEncoder.encode(params.get("nikeName").toString(), "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		Query query = new Query(params);
 		List<BDFaceDetectDO> detectDOs = bdFaceDetectService.list(query);
 		int total = bdFaceDetectService.count(query);
@@ -93,10 +98,20 @@ public class BDFACEController {
 				return WholeResponse.errorResponse("1", "测试账户不允许添加数据");
 			}
 			bdFaceDetectService.batchRemove(faceId);
-			return WholeResponse.successResponse("批量删除博文成功");
+			return WholeResponse.successResponse("批量删除face成功");
 		} catch (Exception e) {
-			logger.error("批量删除博文出错"+e.getMessage());
+			logger.error("批量删除face出错"+e.getMessage());
 			return WholeResponse.errorResponse("500", "系统异常");
 		}
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public WholeResponse apiAddAndUpdateBDFaceDetectDO(BDFaceDetectDO face) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+
+
+		bdFaceDetectService.updateFace(face);
+
+		return WholeResponse.successResponse("更改成功");
 	}
 }
