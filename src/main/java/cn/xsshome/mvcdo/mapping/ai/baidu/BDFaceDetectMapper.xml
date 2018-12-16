@@ -41,6 +41,20 @@
 		</if>
 	</select>
 	<!-- 统计 -->
+	<update id="updateFace" parameterType="cn.xsshome.mvcdo.pojo.ai.baidu.dbo.BDFaceDetectDO">
+		update ai_bd_face
+		<set>
+			<if test="faceProbability != null and faceProbability != ''">faceProbability=#{faceProbability},</if>
+			<if test="age != null and age != ''">age=#{age},</if>
+			<if test="beauty != null and beauty != ''">beauty=#{beauty},</if>
+			<if test="expressionType != null and expressionType != ''">expressionType=#{expressionType},</if>
+			<if test="faceShapeType != null and faceShapeType != ''">faceShapeType=#{faceShapeType},</if>
+			<if test="gender != null and gender != ''">gender=#{gender},</if>
+			<if test="glassesType != null and glassesType != ''">glassesType=#{glassesType},</if>
+			<if test="raceType != null and raceType != ''">raceType=#{raceType}</if>
+		</set>
+		where faceToken=#{faceToken}
+	</update>
  	<select id="count" resultType="int">
 	select count(*) from ai_bd_face
 	<where>

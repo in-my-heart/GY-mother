@@ -11,5 +11,6 @@ public interface BDFaceDetectService {
 	int save(BDFaceDetectDO detectDO);
 	int remove(Long cid);
 	int batchRemove(Long[] cids);
+	int updateFace(BDFaceDetectDO bdFaceDetectDO);
 	BDFaceDetectDO getFaceByToken(String face_token);
 }

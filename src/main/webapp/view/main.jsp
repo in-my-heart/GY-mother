@@ -53,20 +53,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a onclick="personal();" href="#">信箱</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="<%=basePath%>jlpay/loginout">安全退出</a>
+                            <li><a href="<%=basePath%>mvcdo/loginout">安全退出</a>
                             </li>
                         </ul>
                     </div>
                     <div class="logo-element"></div>
                 </li>
-                <li><a href="#"> <i class="fa fa-home"></i> <span
-                        class="nav-label">可视化</span> <span class="fa arrow"></span>
-                </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                        <a id="index001" class="J_menuItem" href="index_v1.html">可视化</a></li>
-                    </ul>
-                </li>
+                <%--<li><a href="#"> <i class="fa fa-home"></i> <span--%>
+                        <%--class="nav-label">可视化</span> <span class="fa arrow"></span>--%>
+                <%--</a>--%>
+                    <%--<ul class="nav nav-second-level">--%>
+                        <%--<li>--%>
+                        <%--<a id="index001" class="J_menuItem" href="index_v1.html">可视化</a></li>--%>
+                    <%--</ul>--%>
+                <%--</li>--%>
 		<c:forEach items="${menus}" var="menu">
 		<li>
 			<a href="#">
@@ -165,10 +165,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li class="J_tabRefreshr"><a onclick="alert('开发中')">刷新当前选项卡</a></li>
                 </ul>
             </div>
-            <a href="<%=basePath%>jlpay/loginout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            <a href="<%=basePath%>mvcdo/loginout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="<%=basePath%>view/chart.jsp" frameborder="0" data-id="index_v1.html"seamless></iframe>
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="<%=basePath%>view/ai/baidu/face.jsp" frameborder="0" data-id="index_v1.html"seamless></iframe>
         </div>
         <div class="footer">
             <div class="pull-right">管理平台</div>

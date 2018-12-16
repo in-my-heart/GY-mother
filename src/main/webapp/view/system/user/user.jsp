@@ -34,12 +34,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<i class="fa fa-trash" aria-hidden="true"></i>删除
 						</button>
 					</div>
-					<div class="columns pull-right">
-						<button class="btn btn-success" onclick="reLoad()">查询</button>
-					</div>
-					<div class="columns pull-right col-md-2 nopadding">
-						<input id="searchName" type="text" class="form-control" placeholder="姓名">
-					</div>
+					<%--<div class="columns pull-right">--%>
+						<%--<button class="btn btn-success" onclick="reLoad()">查询</button>--%>
+					<%--</div>--%>
+					<%--<div class="columns pull-right col-md-2 nopadding">--%>
+						<%--<input id="searchName" type="text" class="form-control" placeholder="姓名">--%>
+					<%--</div>--%>
 						<table id="exampleTable" data-mobile-responsive="true">
 					</table>
 				</div>

@@ -76,6 +76,7 @@ public class BDFaceRestController {
         String dbPath ="/"+perfix;
         String fileName = "faceV3BD"+new Date().getTime()/1000+FileUtil.fileType(file.getOriginalFilename());
         String filePath = request.getSession().getServletContext().getRealPath(perfix);
+        System.out.println(filePath);
         logger.info("=======保存的路径"+filePath+"/"+fileName);
         try {
         	nickName = URLEncoder.encode(nickName, "UTF-8");
